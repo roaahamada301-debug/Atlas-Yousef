@@ -1,0 +1,1147 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+
+/* =================================
+   1. الألوان والأساسيات
+================================= */
+
+:root {
+  --ink: #293b35;
+  --ink-soft: #4c5a48;
+  --brown: #78603d;
+  --gold: #ad8950;
+  --paper: #eadbb9;
+  --paper-light: #f6ebce;
+  --paper-dark: #d3bd91;
+  --night: #182a29;
+  --cream: #f5ebd2;
+  --muted: #8d8067;
+  --success: #3e5948;
+  --danger: #8c4639;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  background: var(--night);
+  font-family: 'Amiri', serif;
+  font-size: 18px;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 3px dashed var(--gold);
+  outline-offset: 4px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.screen {
+  width: 100%;
+  min-height: 100vh;
+  padding: 32px 20px;
+  animation: appear .45s ease both;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(7px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =================================
+   2. شاشة البداية
+================================= */
+
+.intro-screen {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--cream);
+
+  background:
+    radial-gradient(ellipse at 50% 35%,
+      rgba(79, 104, 80, .24), transparent 60%),
+    var(--night);
+}
+
+.intro-screen::before,
+.intro-screen::after {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border: 1px solid rgba(193, 159, 99, .2);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.intro-screen::before {
+  top: -110px;
+  right: -70px;
+}
+
+.intro-screen::after {
+  bottom: -120px;
+  left: -80px;
+}
+
+.intro-decoration {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 26px;
+  color: var(--gold);
+}
+
+.tiny-compass {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+}
+
+.intro-line {
+  width: 70px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: var(--gold);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  direction: ltr;
+}
+
+.intro-screen h1 {
+  margin: 0;
+  color: var(--cream);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(42px, 9vw, 68px);
+  line-height: .98;
+  direction: ltr;
+}
+
+.intro-screen h1 span {
+  display: block;
+  margin-top: 9px;
+  color: #d6bd88;
+}
+
+.intro-arabic-title {
+  margin: 20px 0 10px;
+  font-size: 25px;
+}
+
+.intro-text {
+  max-width: 390px;
+  margin: 8px auto 24px;
+  color: #c7c7b4;
+  line-height: 1.9;
+}
+
+.intro-note {
+  width: min(100%, 410px);
+  padding: 18px 22px;
+  text-align: right;
+  border-top: 1px solid rgba(193, 159, 99, .4);
+  border-bottom: 1px solid rgba(193, 159, 99, .4);
+}
+
+.intro-note > p {
+  margin: 0 0 10px;
+  color: #d6bd88;
+  font-weight: 700;
+}
+
+.intro-note ul {
+  margin: 0;
+  padding-right: 20px;
+  color: #d8d4c2;
+  line-height: 2;
+}
+
+.intro-note li::marker {
+  color: var(--gold);
+}
+
+.main-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 49px;
+  margin-top: 22px;
+  padding: 10px 24px;
+
+  color: #f7ebce;
+  background: var(--success);
+  border: 1px solid #b69a62;
+  border-radius: 5px 10px 5px 9px;
+  box-shadow: 3px 4px 0 rgba(0, 0, 0, .15);
+
+  cursor: pointer;
+  transition: transform .2s ease, background .2s ease;
+}
+
+.main-button:hover {
+  background: #4b6854;
+  transform: translateY(-2px);
+}
+
+.main-button:active {
+  transform: translateY(1px);
+}
+
+.intro-footer {
+  margin: 35px 0 0;
+  color: #8e9a88;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  direction: ltr;
+  letter-spacing: 1px;
+}
+
+
+/* =================================
+   3. شاشة الخريطة: ورقة كاملة
+================================= */
+
+.map-screen {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 28px 12px 34px;
+  color: var(--ink);
+
+  background-color: var(--paper);
+
+  background-image:
+    radial-gradient(
+      ellipse at 18% 13%,
+      rgba(255, 249, 221, .8),
+      transparent 40%
+    ),
+    radial-gradient(
+      ellipse at 86% 70%,
+      rgba(147, 106, 56, .12),
+      transparent 45%
+    ),
+    repeating-linear-gradient(
+      7deg,
+      transparent 0,
+      transparent 8px,
+      rgba(91, 67, 39, .035) 9px,
+      transparent 10px
+    );
+}
+
+/* ملمس خفيف على الورقة */
+.map-screen::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  z-index: -1;
+  border: 1px solid rgba(112, 85, 48, .18);
+  pointer-events: none;
+}
+
+/* زخرفة بسيطة في زاوية الورقة */
+.map-screen::after {
+  content: "N";
+  position: absolute;
+  top: 28px;
+  left: 25px;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(120, 96, 61, .65);
+  border-radius: 50%;
+  color: var(--brown);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 12px;
+  pointer-events: none;
+}
+
+.map-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  width: min(100%, 650px);
+  margin: 0 auto;
+  padding: 12px 12px 4px;
+}
+
+.map-header .eyebrow {
+  margin-bottom: 5px;
+  color: #6d684b;
+}
+
+.map-header h2 {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(29px, 6vw, 38px);
+  line-height: 1.25;
+}
+
+.map-subtitle {
+  margin: 6px 0 0;
+  color: #6e6b57;
+  font-size: 16px;
+}
+
+.map-compass {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+
+  width: 58px;
+  height: 72px;
+  color: var(--brown);
+  border: 1px solid rgba(120, 96, 61, .55);
+  border-radius: 50%;
+  transform: rotate(8deg);
+}
+
+.compass-n,
+.compass-s {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 10px;
+}
+
+.compass-arrow {
+  font-size: 24px;
+  line-height: 1.1;
+}
+
+
+/* =================================
+   4. مساحة الخريطة نفسها
+   لا كارت ولا صندوق
+================================= */
+
+.map-container {
+  position: relative;
+  isolation: isolate;
+
+  width: min(100%, 700px);
+  height: 650px;
+  margin: 15px auto 0;
+  padding: 0;
+
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  box-shadow: none;
+  background: transparent;
+  overflow: visible;
+}
+
+.map-drawing {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  overflow: visible;
+  pointer-events: none;
+}
+
+.map-path-shadow {
+  fill: none;
+  stroke: rgba(249, 238, 204, .75);
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.map-path {
+  fill: none;
+  stroke: #806342;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 3 7;
+}
+
+.map-ink-detail {
+  fill: none;
+  stroke: #6d6749;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: .85;
+}
+
+.map-tree {
+  fill: none;
+  stroke: #52674d;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: .8;
+}
+
+
+/* =================================
+   5. علامات الأماكن الثمانية
+================================= */
+
+.map-point {
+  position: absolute;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+
+  width: 105px;
+  min-height: 82px;
+  padding: 5px 3px;
+
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+
+  text-align: center;
+  cursor: pointer;
+
+  transform: translate(-50%, -50%);
+  transition:
+    transform .22s ease,
+    opacity .22s ease,
+    color .22s ease;
+}
+
+.map-point::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  z-index: -1;
+
+  width: 43px;
+  height: 43px;
+
+  background: rgba(246, 235, 206, .9);
+  border: 1.5px solid #8b7048;
+  border-radius: 48% 52% 44% 56% / 53% 42% 58% 47%;
+
+  transform: translateX(-50%) rotate(-7deg);
+  transition:
+    background .22s ease,
+    border-radius .22s ease,
+    transform .22s ease;
+}
+
+.point-number {
+  position: relative;
+  color: #8a7048;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.2;
+  direction: ltr;
+}
+
+.point-icon {
+  position: relative;
+  display: block;
+  color: #344c3d;
+  font-size: 23px;
+  line-height: 1.25;
+}
+
+.point-label {
+  display: block;
+  max-width: 115px;
+  margin-top: 5px;
+  color: #394537;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-shadow: 0 1px rgba(255, 247, 222, .6);
+}
+
+.map-point:not(:disabled):hover {
+  transform: translate(-50%, -55%) rotate(-2deg);
+}
+
+.map-point:not(:disabled):hover::before {
+  background: #fff0c9;
+  border-radius: 43% 57% 52% 48% / 46% 54% 44% 56%;
+  transform: translateX(-50%) rotate(5deg) scale(1.08);
+}
+
+.map-point:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+.map-point:disabled::before {
+  background: rgba(216, 199, 160, .6);
+  border-style: dashed;
+}
+
+.map-point.solved::before {
+  background: #d4c39a;
+  border-color: #3d5b46;
+  border-width: 2px;
+}
+
+.map-point.solved .point-icon {
+  color: #315440;
+}
+
+.map-point.solved .point-number::after {
+  content: " ✓";
+  color: #3d674b;
+}
+
+
+/* =================================
+   6. توزيع المحطات على الطريق
+================================= */
+
+.point-0 {
+  left: 19.5%;
+  top: 8.5%;
+}
+
+.point-1 {
+  left: 72%;
+  top: 20%;
+}
+
+.point-2 {
+  left: 28%;
+  top: 34.5%;
+}
+
+.point-3 {
+  left: 73%;
+  top: 49%;
+}
+
+.point-4 {
+  left: 26%;
+  top: 64.5%;
+}
+
+.point-5 {
+  left: 72%;
+  top: 78%;
+}
+
+.point-6 {
+  left: 37%;
+  top: 90%;
+}
+
+.point-bonus {
+  left: 52%;
+  top: 98%;
+}
+
+.map-handwriting {
+  position: absolute;
+  z-index: 1;
+  color: #766747;
+  opacity: .8;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  font-style: italic;
+  direction: ltr;
+  pointer-events: none;
+  transform: rotate(-9deg);
+}
+
+.note-upper {
+  top: 29%;
+  right: 2%;
+}
+
+.note-lower {
+  top: 69%;
+  left: 2%;
+  transform: rotate(7deg);
+}
+
+.map-footprint {
+  position: absolute;
+  right: 9%;
+  top: 56%;
+  display: flex;
+  gap: 4px;
+  color: #806342;
+  font-size: 23px;
+  transform: rotate(-20deg);
+  opacity: .6;
+}
+
+
+/* =================================
+   7. أسفل الخريطة ودفتر الأدلة
+================================= */
+
+.map-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  width: min(100%, 650px);
+  margin: 0 auto;
+  padding: 15px 12px 0;
+
+  border-top: 1px solid rgba(120, 96, 61, .35);
+}
+
+#map-progress {
+  margin: 0;
+  color: #5e5b48;
+  font-size: 16px;
+}
+
+.notebook-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 46px;
+  padding: 8px 16px;
+
+  color: #f6e8c5;
+  background: #354b40;
+  border: 1px solid #a78a56;
+  border-radius: 4px 9px 5px 8px;
+  box-shadow: 2px 3px 0 rgba(58, 43, 26, .16);
+
+  cursor: pointer;
+  transition: transform .2s ease;
+}
+
+.notebook-button:hover {
+  transform: translateY(-2px) rotate(-1deg);
+}
+
+
+/* =================================
+   8. شاشة الألغاز
+================================= */
+
+.puzzle-screen,
+.notebook-screen,
+.ending-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background:
+    radial-gradient(ellipse at 50% 20%,
+      rgba(78, 101, 76, .16), transparent 60%),
+    var(--night);
+  color: var(--cream);
+}
+
+.puzzle-header {
+  width: min(100%, 540px);
+  margin: 0 auto 18px;
+}
+
+.text-button {
+  display: inline-block;
+  padding: 7px 0;
+  color: #d7c49a;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.text-button:hover {
+  color: #fff0c9;
+}
+
+.puzzle-header .eyebrow {
+  margin-top: 12px;
+}
+
+.puzzle-paper,
+.notebook-paper {
+  position: relative;
+  width: min(100%, 540px);
+  padding: 34px 25px;
+
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at 10% 10%,
+      #fff4d7, transparent 55%),
+    var(--paper);
+
+  box-shadow: 5px 7px 0 rgba(0, 0, 0, .12);
+}
+
+.puzzle-paper::before,
+.notebook-paper::before {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  border: 1px solid rgba(120, 96, 61, .25);
+  pointer-events: none;
+}
+
+.paper-stamp {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  padding: 5px 8px;
+  color: #8b6045;
+  border: 1px solid #8b6045;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 10px;
+  line-height: 1.2;
+  text-align: center;
+  transform: rotate(-9deg);
+  opacity: .75;
+}
+
+.puzzle-label {
+  margin: 0 0 7px;
+  color: #8c7149;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  direction: ltr;
+}
+
+.puzzle-paper h2,
+.notebook-paper h2 {
+  margin: 0 0 18px;
+  color: var(--ink);
+  font-size: 31px;
+}
+
+.puzzle-story {
+  margin: 0;
+  color: #4e5746;
+  line-height: 1.9;
+  white-space: pre-line;
+}
+
+.puzzle-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 25px 0;
+  color: #8b7147;
+}
+
+.puzzle-divider span:not(:nth-child(2)) {
+  width: 55px;
+  height: 1px;
+  background: #b49a6c;
+}
+
+.puzzle-question {
+  margin: 0 0 22px;
+  color: #293b35;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.9;
+  white-space: pre-line;
+}
+
+#answer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#answer-form label {
+  font-size: 16px;
+}
+
+#answer-input {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 13px;
+
+  color: var(--ink);
+  background: rgba(255, 250, 231, .8);
+  border: 1px solid #ad9568;
+  border-radius: 4px;
+  outline-offset: 2px;
+}
+
+#answer-input::placeholder {
+  color: #9a8c70;
+}
+
+#answer-form .main-button {
+  width: 100%;
+  margin-top: 6px;
+}
+
+.feedback {
+  min-height: 28px;
+  margin: 14px 0 0;
+  font-weight: 700;
+}
+
+.feedback.correct {
+  color: #315d42;
+}
+
+.feedback.error {
+  color: var(--danger);
+}
+
+.hint-button {
+  margin-top: 10px;
+  padding: 8px 0;
+  color: #725b3c;
+  background: transparent;
+  border: 0;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  cursor: pointer;
+}
+
+.hint-button:disabled {
+  opacity: .5;
+}
+
+.hint-text {
+  margin: 10px 0 0;
+  padding: 12px;
+  color: #51452e;
+  background: rgba(202, 180, 132, .3);
+  border-right: 3px solid var(--gold);
+  line-height: 1.8;
+}
+
+.success-actions {
+  margin-top: 18px;
+  padding-top: 17px;
+  border-top: 1px dashed #a99167;
+}
+
+.success-actions p {
+  line-height: 1.8;
+}
+
+.success-actions .main-button {
+  width: 100%;
+}
+
+
+/* =================================
+   9. دفتر الأدلة
+================================= */
+
+.notebook-paper {
+  margin-top: 24px;
+}
+
+.notebook-intro {
+  margin: 0 0 22px;
+  color: #65634f;
+  line-height: 1.8;
+}
+
+#clue-list {
+  margin: 0;
+  padding-right: 25px;
+}
+
+#clue-list li {
+  padding: 12px 5px;
+  border-bottom: 1px dashed rgba(120, 96, 61, .35);
+  line-height: 1.8;
+}
+
+#clue-list li::marker {
+  color: #927348;
+}
+
+
+/* =================================
+   10. شاشة النهاية
+================================= */
+
+.ending-screen {
+  justify-content: center;
+  text-align: center;
+}
+
+.ending-screen h2 {
+  max-width: 460px;
+  margin: 8px auto;
+  color: var(--cream);
+  font-size: 34px;
+}
+
+.ending-text {
+  max-width: 390px;
+  color: #c6c9b5;
+  line-height: 1.9;
+}
+
+.final-letter {
+  width: min(100%, 480px);
+  margin-top: 22px;
+  padding: 30px 24px;
+
+  color: var(--ink);
+  background: var(--paper-light);
+  box-shadow: 5px 7px 0 rgba(0, 0, 0, .15);
+  text-align: right;
+  line-height: 2;
+}
+
+.final-letter p {
+  margin: 0 0 15px;
+}
+
+.letter-signature {
+  padding-top: 10px;
+  color: #826541;
+  text-align: left;
+}
+
+
+/* =================================
+   11. شاشات الموبايل
+================================= */
+
+@media (max-width: 480px) {
+  .screen {
+    padding: 25px 14px;
+  }
+
+  .intro-screen {
+    padding: 35px 20px;
+  }
+
+  .intro-screen h1 {
+    font-size: 45px;
+  }
+
+  .intro-arabic-title {
+    font-size: 23px;
+  }
+
+  .map-screen {
+    padding: 27px 10px 30px;
+  }
+
+  .map-header {
+    padding: 14px 10px 4px;
+    gap: 10px;
+  }
+
+  .map-header h2 {
+    font-size: 29px;
+  }
+
+  .map-subtitle {
+    font-size: 14px;
+  }
+
+  .map-compass {
+    width: 47px;
+    height: 61px;
+  }
+
+  .map-container {
+    height: 620px;
+    margin-top: 15px;
+  }
+
+  .map-point {
+    width: 88px;
+    min-height: 77px;
+  }
+
+  .map-point::before {
+    width: 39px;
+    height: 39px;
+  }
+
+  .point-icon {
+    font-size: 21px;
+  }
+
+  .point-label {
+    max-width: 90px;
+    font-size: 13px;
+  }
+
+  .point-number {
+    font-size: 10px;
+  }
+
+  .point-0 {
+    left: 20%;
+    top: 8%;
+  }
+
+  .point-1 {
+    left: 76%;
+    top: 19%;
+  }
+
+  .point-2 {
+    left: 27%;
+    top: 34%;
+  }
+
+  .point-3 {
+    left: 76%;
+    top: 48%;
+  }
+
+  .point-4 {
+    left: 25%;
+    top: 63%;
+  }
+
+  .point-5 {
+    left: 76%;
+    top: 77%;
+  }
+
+  .point-6 {
+    left: 35%;
+    top: 89%;
+  }
+
+  .point-bonus {
+    left: 53%;
+    top: 98%;
+  }
+
+  .note-upper {
+    right: 0;
+    font-size: 11px;
+  }
+
+  .note-lower {
+    left: 0;
+    font-size: 11px;
+  }
+
+  .map-footer {
+    padding: 14px 8px 0;
+  }
+
+  #map-progress {
+    font-size: 14px;
+  }
+
+  .notebook-button {
+    padding: 8px 12px;
+    font-size: 16px;
+  }
+
+  .puzzle-paper,
+  .notebook-paper {
+    padding: 30px 19px;
+  }
+
+  .puzzle-paper h2,
+  .notebook-paper h2 {
+    font-size: 28px;
+  }
+
+  .puzzle-question {
+    font-size: 18px;
+  }
+
+  .paper-stamp {
+    top: 16px;
+    left: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+/* ظهور رسالة الهدية بالتدريج */
+#ending-message > p {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#ending-message > p.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}

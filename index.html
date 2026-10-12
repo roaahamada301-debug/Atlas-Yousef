@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yousef's Little Atlas</title>
+  <meta name="description" content="رحلة غامضة بين ثمانية أماكن، وأسرار تنتظر من يكتشفها.">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+<main>
+
+  <section id="intro" class="screen intro-screen">
+    <div class="intro-decoration" aria-hidden="true">
+      <span class="tiny-compass">N</span>
+      <span class="intro-line"></span>
+    </div>
+    <p class="eyebrow">A MAP MADE OF SECRETS</p>
+    <h1>Yousef's <span>Little Atlas</span></h1>
+    <p class="intro-arabic-title">أطلس يوسف الصغير</p>
+    <p class="intro-text">ليست كل الطرق مرسومة، وليست كل الأسرار مخبأة في أماكن بعيدة.</p>
+    <div class="intro-note">
+      <p>قبل أن تبدأ الرحلة...</p>
+      <ul>
+        <li>كل مكان يخفي لغزًا.</li>
+        <li>كل إجابة صحيحة تفتح طريقًا جديدًا.</li>
+        <li>لديك تلميح واحد لكل لغز.</li>
+        <li>انتبه للتفاصيل الصغيرة؛ فقد تحتاجها في النهاية.</li>
+      </ul>
+    </div>
+    <button id="start-btn" class="main-button" type="button">ابدأ الرحلة <span>←</span></button>
+    <p class="intro-footer">Created for a curious mind</p>
+  </section>
+
+  <section id="map-screen" class="screen map-screen hidden">
+    <header class="map-header">
+      <div>
+        <p class="eyebrow">THE EXPLORER'S ATLAS</p>
+        <h2>خريطة الأسرار</h2>
+        <p class="map-subtitle">كل علامة تقرّبك من الحكاية.</p>
+      </div>
+      <div class="map-compass" aria-label="بوصلة">
+        <span class="compass-n">N</span>
+        <span class="compass-arrow">✥</span>
+        <span class="compass-s">S</span>
+      </div>
+    </header>
+
+    <div id="map" class="map-container">
+      <svg class="map-drawing" viewBox="0 0 360 650" preserveAspectRatio="none" aria-hidden="true">
+        <path class="map-path-shadow" d="M 70 55 C 150 65, 245 75, 260 130 S 90 170, 100 225 S 280 265, 270 320 S 90 365, 95 420 S 270 460, 255 510 S 140 555, 180 610"/>
+        <path class="map-path" d="M 70 55 C 150 65, 245 75, 260 130 S 90 170, 100 225 S 280 265, 270 320 S 90 365, 95 420 S 270 460, 255 510 S 140 555, 180 610"/>
+        <path class="map-ink-detail" d="M 22 175 l 15 -24 l 14 24 l 12 -18 l 15 18"/>
+        <path class="map-ink-detail" d="M 280 210 l 12 -20 l 13 20 l 10 -14 l 12 14"/>
+        <g class="map-tree" transform="translate(24 330)"><path d="M 0 25 L 0 8 M -9 17 L 0 2 L 9 17 Z"/></g>
+        <g class="map-tree" transform="translate(320 390)"><path d="M 0 25 L 0 8 M -9 17 L 0 2 L 9 17 Z"/></g>
+        <path class="map-ink-detail" d="M 24 515 q 15 -9 30 0 q -15 11 -30 0 Z"/>
+      </svg>
+
+      <button class="map-point point-0" data-place="0" type="button" aria-label="المكان الأول: المكتبة">
+        <span class="point-number">01</span><span class="point-icon">▤</span><span class="point-label">المكتبة</span>
+      </button>
+      <button class="map-point point-1" data-place="1" type="button" aria-label="المكان الثاني: المطبخ" disabled>
+        <span class="point-number">02</span><span class="point-icon">♨</span><span class="point-label">المطبخ</span>
+      </button>
+      <button class="map-point point-2" data-place="2" type="button" aria-label="المكان الثالث: المدينة البعيدة" disabled>
+        <span class="point-number">03</span><span class="point-icon">⌂</span><span class="point-label">المدينة البعيدة</span>
+      </button>
+      <button class="map-point point-3" data-place="3" type="button" aria-label="المكان الرابع: ممر الثعلب" disabled>
+        <span class="point-number">04</span><span class="point-icon">♧</span><span class="point-label">ممر الثعلب</span>
+      </button>
+      <button class="map-point point-4" data-place="4" type="button" aria-label="المكان الخامس: غرفة الساعات" disabled>
+        <span class="point-number">05</span><span class="point-icon">◷</span><span class="point-label">غرفة الساعات</span>
+      </button>
+      <button class="map-point point-5" data-place="5" type="button" aria-label="المكان السادس: المرصد" disabled>
+        <span class="point-number">06</span><span class="point-icon">⌖</span><span class="point-label">المرصد</span>
+      </button>
+      <button class="map-point point-6" data-place="6" type="button" aria-label="المكان السابع: الغرفة المخفية" disabled>
+        <span class="point-number">07</span><span class="point-icon">⌑</span><span class="point-label">الغرفة المخفية</span>
+      </button>
+      <button class="map-point point-bonus hidden" data-place="7" type="button" aria-label="التحدي النهائي" disabled>
+        <span class="point-number">08</span><span class="point-icon">⚿</span><span class="point-label">السر الأخير</span>
+      </button>
+
+      <div class="map-handwriting note-upper" aria-hidden="true">follow the clues</div>
+      <div class="map-handwriting note-lower" aria-hidden="true">not all is as it seems</div>
+      <div class="map-footprint" aria-hidden="true"><span>·</span><span>·</span><span>·</span></div>
+    </div>
+
+    <footer class="map-footer">
+      <p id="map-progress">الأماكن المكتشفة: 0 / 8</p>
+      <button id="notebook-btn" class="notebook-button" type="button"><span>▤</span> دفتر الأدلة</button>
+    </footer>
+  </section>
+
+  <section id="puzzle-screen" class="screen puzzle-screen hidden">
+    <header class="puzzle-header">
+      <button id="back-btn" class="text-button" type="button">→ العودة للخريطة</button>
+      <p id="place-number" class="eyebrow">PLACE 01</p>
+    </header>
+    <article class="puzzle-paper">
+      <div class="paper-stamp" aria-hidden="true">FIELD<br>NOTES</div>
+      <p class="puzzle-label">THE NEXT CLUE</p>
+      <h2 id="place-title">المكتبة</h2>
+      <p id="place-story" class="puzzle-story"></p>
+      <div class="puzzle-divider"><span></span><span>◆</span><span></span></div>
+      <p id="puzzle-question" class="puzzle-question"></p>
+      <form id="answer-form">
+        <label for="answer-input">اكتب إجابتك هنا</label>
+        <input id="answer-input" name="answer" type="text" autocomplete="off" placeholder="فكّر جيدًا..." required>
+        <button id="submit-answer" class="main-button" type="submit">تحقق من الإجابة</button>
+      </form>
+      <p id="feedback" class="feedback" aria-live="polite"></p>
+      <button id="hint-btn" class="hint-button" type="button">أحتاج إلى تلميح</button>
+      <p id="hint-text" class="hint-text hidden" aria-live="polite"></p>
+      <div id="success-actions" class="success-actions hidden">
+        <p id="success-message"></p>
+        <button id="continue-btn" class="main-button" type="button">متابعة الرحلة ←</button>
+      </div>
+    </article>
+  </section>
+
+  <section id="notebook-screen" class="screen notebook-screen hidden">
+    <button id="notebook-back-btn" class="text-button" type="button">→ العودة للخريطة</button>
+    <article class="notebook-paper">
+      <p class="eyebrow">THE EXPLORER'S JOURNAL</p>
+      <h2>دفتر الأدلة</h2>
+      <p class="notebook-intro">كل تفصيلة اكتشفتها قد تقودك إلى الإجابة الأخيرة.</p>
+      <ol id="clue-list"><li id="empty-clues">لم تُكتشف أدلة بعد.</li></ol>
+    </article>
+  </section>
+
+  <section id="ending-screen" class="screen ending-screen hidden">
+    <p class="eyebrow">THE LAST PAGE</p>
+    <h2>وصلت إلى نهاية الخريطة...</h2>
+    <p class="ending-text">لكن بعض الرحلات لا تنتهي عند آخر علامة.</p>
+
+    <article id="ending-message" class="final-letter">
+      <p>Happy Birthday, Yousef! 🎂</p>
+      <p>وصلت للنهايةyoufox! 🦊</p>
+      <p>خلصت والألغاز اتحلت وكل مكان على الخريطة اتكشف.</p>
+      <p>بس أتمنى تكون استمتعت بالمغامرة الصغيرة دي لان الحقيقة إن الأطلس ده مكنش مجرد خريطة وألغاز لكنه محاولة إني اخليك تعالج التعفن الدماغي."I don't mean that."</p>
+      <p>كل سنة وإنت بخير يا يوسف ويا رب سنتك الجديدة تكون مليانة adventures لطيفة وأماكن جديدة تزورها وحاجات كتييير تكتشفها وأيام عادية برضو تتحول لذكريات مميزة من غير ما تخطط لها. أتمنى تفضل محتفظ بفضولك تجاه العالم، وبقدرتك إنك تلاقي حاجة تستحق الاهتمام حتى في أبسط التفاصيل.</p>
+      <p>وأهم حاجة، أتمنى لما ترجع للموقع ده في يوم من الأيام تفتكر إن فيه حد خصّص وقتًا من يومه عشان ويجمع تفاصيل صغيرة عنك ويحاول يصنع لك حاجة مختلفة مخصوص For you.</p>
+      <p>يمكن الهدية مش كبيرة بس اتعملت بكل لطف وحب "كنت هولع في نفسي وانا بكتب الاكواد" وأتمنى إنها تكون قدرت توصّلك الإحساس ده.</p>
+      <p>Here's to another year of discoveries, little details, and unexpected adventures. 🌍</p>
+      <p>Happy birthday, Youfox. Stay curious. 🤎</p>
+    </article>
+
+    <button id="restart-btn" class="main-button" type="button">ابدأ رحلة جديدة</button>
+  </section>
+
+</main>
+</body>
+</html>
